@@ -48,8 +48,10 @@ Additionally this crate includes a CLI tool for your convenience:
         -b, --bankcode <bank_code>    Look up bank by German bank code (format: 12030000)
         -i, --iban <iban>             Look up bank by IBAN (format: DE02120300000000202051)
 
-Example usage:
+Example usages:
 
     cargo run -- -b 12030000
+
+    cargo run -- -i DE02120300000000202051
 
 This crate is inspired by https://github.com/jhermsmeier/fints-institute-db and https://github.com/dr-duplo/python-fints-url

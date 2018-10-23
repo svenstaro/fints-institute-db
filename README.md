@@ -12,13 +12,15 @@ During the build it will download a CSV file with all the banks which it will th
 Put this into your `Cargo.toml`:
 
     [dependencies]
-    fints_institute_db = "1"
+    fints_institute_db = "0.2"
 
 Then to use it:
 
-    extern crate fints_institute_db;
-    use fints_institute_db::get_bank_by_bank_code;
-    let bank = get_bank_by_bank_code("12070000");
+```rust
+extern crate fints_institute_db;
+use fints_institute_db::get_bank_by_bank_code;
+let bank = get_bank_by_bank_code("12070000");
+```
 
 ## Command line utility
 

@@ -1,6 +1,6 @@
 [package]
 name = "fints-institute-db"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
 edition = "2018"
 description = "A library and CLI tool to access FinTS access information for many German banks"
@@ -9,6 +9,10 @@ license = "MIT"
 readme = "README.md"
 keywords = ["fints", "hbci", "bank", "banks", "banking"]
 categories = ["command-line-utilities", "command-line-interface", "parsing"]
+
+[badges]
+travis-ci = { repository = "svenstaro/fints-institute-db", branch = "master" }
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 csv = "1"

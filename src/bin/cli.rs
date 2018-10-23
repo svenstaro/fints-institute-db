@@ -89,8 +89,11 @@ By default it will return just the FinTS URL for the first matching bank.",
         if let Some(bank) = bank {
             if print_json {
                 println!("{}", serde_json::to_string_pretty(&bank)?);
+            } else if let Some(pin_tan_url) = bank.pin_tan_url {
+                println!("{}", pin_tan_url);
             } else {
-                println!("{}", bank.pin_tan_url);
+                eprintln!("This bank has no available PIN TAN URL");
+                std::process::exit(1);
             }
         } else {
             eprintln!("No matching bank found");

@@ -29,7 +29,7 @@ println!("{:?}", bank.pin_tan_url);
 
 Additionally this crate includes a CLI tool for your convenience:
 
-    fints-institute-db 0.2.0
+    fints-institute-db 0.2.1
     Sven-Hendrik Haase <svenstaro@gmail.com>
     Tool to query the FinTS database.
     

@@ -4,7 +4,7 @@ extern crate fints_institute_db;
 extern crate iban;
 extern crate serde_json;
 
-use clap::{App, Arg, ArgGroup};
+use clap::{App, Arg, ArgGroup, AppSettings};
 use fints_institute_db::{get_bank_by_bank_code, get_banks_by_bank_code};
 use iban::{BbanResult, Iban};
 
@@ -25,6 +25,7 @@ fn main() -> Result<(), Box<std::error::Error>> {
         .version(crate_version!())
         .author(crate_authors!())
         .about("Tool to query the FinTS database")
+        .global_setting(AppSettings::ColoredHelp)
         .long_about(
             "Tool to query the FinTS database.
 

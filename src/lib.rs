@@ -13,13 +13,8 @@
 //! println!("{:?}", bank.pin_tan_url);
 //! ```
 
-extern crate chrono;
-extern crate csv;
-#[macro_use]
-extern crate serde_derive;
-extern crate serde;
-
 use chrono::prelude::*;
+use serde_derive::{Deserialize, Serialize};
 use serde::{Deserialize, Deserializer};
 
 static BANKS: &'static [u8] = include_bytes!(concat!(env!("OUT_DIR"), "/fints_institute.csv"));

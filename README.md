@@ -18,7 +18,6 @@ Put this into your `Cargo.toml`:
 Then to use it:
 
 ```rust
-extern crate fints_institute_db;
 use fints_institute_db::get_bank_by_bank_code;
 
 let bank = get_bank_by_bank_code("12070000");

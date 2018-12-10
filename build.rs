@@ -1,6 +1,3 @@
-extern crate reqwest;
-extern crate encoding_rs;
-
 use std::env;
 use std::fs;
 use encoding_rs::ISO_8859_15;

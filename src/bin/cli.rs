@@ -1,12 +1,9 @@
-#[macro_use]
-extern crate clap;
-extern crate fints_institute_db;
-extern crate iban;
-extern crate serde_json;
-
-use clap::{App, Arg, ArgGroup, AppSettings};
-use fints_institute_db::{get_bank_by_bank_code, get_banks_by_bank_code};
+use clap::{
+    crate_authors, crate_name, crate_version, value_t_or_exit, App, AppSettings, Arg, ArgGroup,
+};
 use iban::{BbanResult, Iban};
+
+use fints_institute_db::{get_bank_by_bank_code, get_banks_by_bank_code};
 
 fn is_iban(iban: String) -> Result<(), String> {
     if let Ok(iban) = iban.parse::<Iban>() {

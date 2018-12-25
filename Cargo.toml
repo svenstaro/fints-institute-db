@@ -20,7 +20,7 @@ lto = true
 [dependencies]
 csv = "1"
 clap = "2"
-iban_validate = "1"
+iban_validate = "2"
 chrono = { version = "0.4", features = ["serde"] }
 serde = "1"
 serde_derive = "1"

@@ -3,7 +3,6 @@ language: rust
 rust:
   - stable
   - beta
-  - nightly
 
 addons:
   apt:
@@ -16,27 +15,27 @@ addons:
 env:
 matrix:
   allow_failures:
-    - rust: stable
+    - rust: nightly
   include:
     - env:
       - TARGET=x86_64-unknown-linux-musl
       - BIN_NAME=cli
       - PROPER_NAME=fints-institute-db-linux
       os: linux
-      rust: nightly
+      rust: stable
     - env:
       - TARGET=x86_64-pc-windows-gnu
       - BIN_NAME=cli.exe
       - PROPER_NAME=fints-institute-db-win.exe
       - RUSTFLAGS="-C linker=x86_64-w64-mingw32-gcc"
       os: linux
-      rust: nightly
+      rust: stable
     - env:
       - TARGET=x86_64-apple-darwin
       - BIN_NAME=cli
       - PROPER_NAME=fints-institute-db-osx
       os: osx
-      rust: nightly
+      rust: stable
 
 before_install:
   - rustup self update
@@ -66,4 +65,4 @@ deploy:
     on:
       branch: master
       tags: true
-      condition: $TRAVIS_RUST_VERSION = nightly && -n $TARGET
+      condition: $TRAVIS_RUST_VERSION = stable && -n $TARGET

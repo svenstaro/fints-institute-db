@@ -28,7 +28,7 @@ println!("{:?}", bank.pin_tan_url);
 
 Additionally this crate includes a CLI tool for your convenience:
 
-    fints-institute-db 0.2.4
+    fints-institute-db 0.2.5
     Sven-Hendrik Haase <svenstaro@gmail.com>
     Tool to query the FinTS database.
     
@@ -54,3 +54,11 @@ Example usages:
     cargo run -- -i DE02120300000000202051
 
 This crate is inspired by https://github.com/jhermsmeier/fints-institute-db and https://github.com/dr-duplo/python-fints-url
+
+## Releasing
+
+This is mostly a note for me on how to release this thing:
+
+- Update version in Cargo.toml.
+- git commit and git tag -s, git push.
+- cargo publish

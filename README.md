@@ -13,7 +13,7 @@ During the build it will download a CSV file with all the banks which it will th
 Put this into your `Cargo.toml`:
 
     [dependencies]
-    fints_institute_db = "0.2"
+    fints_institute_db = "0.3"
 
 Then to use it:
 
@@ -28,7 +28,7 @@ println!("{:?}", bank.pin_tan_url);
 
 Additionally this crate includes a CLI tool for your convenience:
 
-    fints-institute-db 0.2.5
+    fints-institute-db 0.3.0
     Sven-Hendrik Haase <svenstaro@gmail.com>
     Tool to query the FinTS database.
     
@@ -38,7 +38,6 @@ Additionally this crate includes a CLI tool for your convenience:
         cli [FLAGS] [OPTIONS] <--iban <iban>|--bankcode <bank_code>>
     
     FLAGS:
-        -a, --all        Print all banks as opposed to just the first matching one (implies --json)
         -h, --help       Prints help information
         -j, --json       Change tool behavior to output all data for the record as JSON
         -V, --version    Prints version information

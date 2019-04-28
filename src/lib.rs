@@ -1,5 +1,5 @@
 //! This is a simple crate providing a convenient and safe interface to FinTS information of German
-//! banks. During the build it will download a CSV file with all the banks which it will then put
+//! banks. During the build it will download a file with all the banks which it will then put
 //! into the library itself so that no extra files have to be taken care of.
 //!
 //! Usage is easy:
@@ -10,129 +10,48 @@
 //! use fints_institute_db::get_bank_by_bank_code;
 //!
 //! let bank = get_bank_by_bank_code("12070000").unwrap();
-//! println!("{:?}", bank.pin_tan_url);
+//! println!("{:?}", bank.pin_tan_address);
 //! ```
 
-use chrono::prelude::*;
 use serde_derive::{Deserialize, Serialize};
-use serde::{Deserialize, Deserializer};
+use std::str::FromStr;
 
-static BANKS: &'static [u8] = include_bytes!(concat!(env!("OUT_DIR"), "/fints_institute.csv"));
+static BANKS: &'static str = include_str!(concat!(env!("OUT_DIR"), "/blz.properties"));
 
-fn empty_or_unsupported<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
-where
-    D: Deserializer<'de>,
-{
-    let value = String::deserialize(deserializer)?;
-    if value.is_empty() || value == "nicht unterstützt" {
-        Ok(None)
-    } else {
-        Ok(Some(value))
-    }
-}
-
-fn from_german_bool<'de, D>(deserializer: D) -> Result<bool, D::Error>
-where
-    D: Deserializer<'de>,
-{
-    let german_bool = String::deserialize(deserializer)?;
-    if german_bool == "ja" {
-        Ok(true)
-    } else {
-        Ok(false)
-    }
-}
-
-fn from_german_date<'de, D>(deserializer: D) -> Result<Option<NaiveDate>, D::Error>
-where
-    D: Deserializer<'de>,
-{
-    let german_date = String::deserialize(deserializer)?;
-    if german_date.is_empty() {
-        return Ok(None);
-    }
-    let parsed_date =
-        NaiveDate::parse_from_str(&german_date, "%d.%m.%Y").map_err(serde::de::Error::custom)?;
-    Ok(Some(parsed_date))
-}
-
-#[rustfmt::skip]
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
+#[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq)]
 pub struct Bank {
-    #[serde(rename(deserialize = "BLZ"))]
     pub bank_code: String,
-    #[serde(rename(deserialize = "Institut"))]
     pub institute: String,
-    #[serde(rename(deserialize = "Ort"))]
     pub location: String,
-    #[serde(rename(deserialize = "RZ"))]
-    pub data_center: String,
-    #[serde(rename(deserialize = "Organisation"))]
-    pub organisation: String,
-    #[serde(rename(deserialize = "HBCI-Zugang DNS"), deserialize_with = "empty_or_unsupported")]
-    pub hbci_domain: Option<String>,
-    #[serde(rename(deserialize = "HBCI- Zugang     IP-Adresse"), deserialize_with = "empty_or_unsupported")]
-    pub hbci_address: Option<String>,
-    #[serde(rename(deserialize = "HBCI-Version"), deserialize_with = "empty_or_unsupported")]
-    pub hbci_version: Option<String>,
-    #[serde(rename(deserialize = "DDV"), deserialize_with = "from_german_bool")]
-    pub ddv: bool,
-    #[serde(rename(deserialize = "RDH-1"), deserialize_with = "from_german_bool")]
-    pub rdh1: bool,
-    #[serde(rename(deserialize = "RDH-2"), deserialize_with = "from_german_bool")]
-    pub rdh2: bool,
-    #[serde(rename(deserialize = "RDH-3"), deserialize_with = "from_german_bool")]
-    pub rdh3: bool,
-    #[serde(rename(deserialize = "RDH-4"), deserialize_with = "from_german_bool")]
-    pub rdh4: bool,
-    #[serde(rename(deserialize = "RDH-5"), deserialize_with = "from_german_bool")]
-    pub rdh5: bool,
-    #[serde(rename(deserialize = "RDH-6"), deserialize_with = "from_german_bool")]
-    pub rdh6: bool,
-    #[serde(rename(deserialize = "RDH-7"), deserialize_with = "from_german_bool")]
-    pub rdh7: bool,
-    #[serde(rename(deserialize = "RDH-8"), deserialize_with = "from_german_bool")]
-    pub rdh8: bool,
-    #[serde(rename(deserialize = "RDH-9"), deserialize_with = "from_german_bool")]
-    pub rdh9: bool,
-    #[serde(rename(deserialize = "RDH-10"), deserialize_with = "from_german_bool")]
-    pub rdh10: bool,
-    #[serde(rename(deserialize = "RAH-7"), deserialize_with = "from_german_bool")]
-    pub rah7: bool,
-    #[serde(rename(deserialize = "RAH-9"), deserialize_with = "from_german_bool")]
-    pub rah9: bool,
-    #[serde(rename(deserialize = "RAH-10"), deserialize_with = "from_german_bool")]
-    pub rah10: bool,
-    #[serde(rename(deserialize = "PIN/TAN-Zugang URL"), deserialize_with = "empty_or_unsupported")]
-    pub pin_tan_url: Option<String>,
-    #[serde(rename(deserialize = "Version"), deserialize_with = "empty_or_unsupported")]
-    pub version: Option<String>,
-    #[serde(rename(deserialize = "Datum letzte Änderung"), deserialize_with = "from_german_date")]
-    pub updated: Option<NaiveDate>,
+    pub bic: String,
+    pub checksum_method: String,
+    pub rdh_address: Option<String>,
+    pub pin_tan_address: Option<String>,
+    pub rdh_version: Option<String>,
+    pub pin_tan_version: Option<String>,
 }
 
-/// Retrieves all banks with `bank_code`.
-///
-/// Use this only if you want to receive all branches of a certain type of bank.
-/// For FinTS purposes the specific branch of the bank shouldn't matter as the FinTS access
-/// data should be the same across all branches.
-///
-/// # Examples
-///
-/// ```
-/// use fints_institute_db::get_banks_by_bank_code;
-///
-/// let banks = get_banks_by_bank_code("12070000");
-/// println!("{:#?}", banks);
-/// ```
-pub fn get_banks_by_bank_code(bank_code: &str) -> Vec<Bank> {
-    let mut rdr = csv::ReaderBuilder::new().delimiter(b';').from_reader(BANKS);
-    let mut banks = rdr
-        .deserialize()
-        .map(|r: Result<Bank, _>| r.unwrap())
-        .collect::<Vec<_>>();
-    banks.retain(|bank| bank.bank_code == bank_code);
-    banks
+impl FromStr for Bank {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        // It's a bit of weird format that looks like this:
+        // bank_code=institute|location|bic|checksum_method|rdh_address|pin_tan_address|rdh_version|pin_tan_version
+        let first_part: Vec<&str> = s.split('=').collect();
+        let second_part: Vec<&str> = first_part[1].split('|').collect();
+        let bank = Bank {
+            bank_code: first_part[0].to_string(),
+            institute: second_part[0].to_string(),
+            location: second_part[1].to_string(),
+            bic: second_part[2].to_string(),
+            checksum_method: second_part[3].to_string(),
+            rdh_address: second_part.get(4).map(|x| x.to_string()),
+            pin_tan_address: second_part.get(5).map(|x| x.to_string()),
+            rdh_version: second_part.get(6).map(|x| x.to_string()),
+            pin_tan_version: second_part.get(7).map(|x| x.to_string()),
+        };
+        Ok(bank)
+    }
 }
 
 /// Retrieves the first bank with `bank_code`
@@ -148,11 +67,14 @@ pub fn get_banks_by_bank_code(bank_code: &str) -> Vec<Bank> {
 /// println!("{:?}", bank);
 /// ```
 pub fn get_bank_by_bank_code(bank_code: &str) -> Option<Bank> {
-    let mut rdr = csv::ReaderBuilder::new().delimiter(b';').from_reader(BANKS);
-    for result in rdr.deserialize() {
-        let bank: Bank = result.unwrap();
-        if bank.bank_code == bank_code {
-            return Some(bank);
+    for bank in BANKS.lines() {
+        let first_part: Vec<&str> = bank.split('=').collect();
+        let current_bank_code = first_part[0];
+        if current_bank_code == bank_code {
+            return Some(Bank::from_str(bank).expect(
+                    "Invalid bank format found in source file.
+                    This definitely shouldn't happen and is a serious issue with the bank info source file."
+            ));
         }
     }
     None
@@ -161,6 +83,7 @@ pub fn get_bank_by_bank_code(bank_code: &str) -> Option<Bank> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use pretty_assertions::assert_eq;
 
     // These tests use the real CSV input data.
     // As such, the tests might break randomly if the input document changes.
@@ -172,19 +95,13 @@ mod tests {
         let bank = get_bank_by_bank_code(bank_code).unwrap();
 
         assert_eq!(bank.bank_code, bank_code);
-        assert_eq!(bank.hbci_domain, Some("hbci.gad.de".to_string()));
-        assert_eq!(bank.hbci_address, None);
-        assert_eq!(bank.hbci_version, Some("3.0".to_string()));
-        assert_eq!(bank.pin_tan_url, Some("https://hbci-pintan.gad.de/cgi-bin/hbciservlet".to_string()));
-        assert_eq!(bank.hbci_version, Some("3.0".to_string()));
-        assert_eq!(bank.updated, Some(NaiveDate::from_ymd(2016, 4, 28)));
-    }
-
-    #[test]
-    fn getting_multiple_banks_works() {
-        let bank_code = "44570004";
-        let banks = get_banks_by_bank_code(bank_code);
-
-        assert_eq!(banks.len(), 7);
+        assert_eq!(bank.institute, "Mendener Bank");
+        assert_eq!(bank.location, "Menden (Sauerland)");
+        assert_eq!(bank.bic, "GENODEM1MEN");
+        assert_eq!(bank.checksum_method, "34");
+        assert_eq!(bank.rdh_address, Some("hbci.gad.de".to_string()));
+        assert_eq!(bank.pin_tan_address, Some("https://hbci-pintan.gad.de/cgi-bin/hbciservlet".to_string()));
+        assert_eq!(bank.rdh_version, Some("300".to_string()));
+        assert_eq!(bank.pin_tan_version, Some("300".to_string()));
     }
 }

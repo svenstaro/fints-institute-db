@@ -3,7 +3,7 @@ use clap::{
 };
 use iban::{BbanResult, Iban};
 
-use fints_institute_db::{get_bank_by_bank_code, get_banks_by_bank_code};
+use fints_institute_db::get_bank_by_bank_code;
 
 fn is_iban(iban: String) -> Result<(), String> {
     if let Ok(iban) = iban.parse::<Iban>() {
@@ -44,12 +44,6 @@ By default it will return just the FinTS URL for the first matching bank.",
                 .help("Look up bank by German bank code (format: 12030000)"),
         )
         .arg(
-            Arg::with_name("all")
-                .short("a")
-                .long("all")
-                .help("Print all banks as opposed to just the first matching one (implies --json)"),
-        )
-        .arg(
             Arg::with_name("json")
                 .short("j")
                 .long("json")
@@ -72,31 +66,21 @@ By default it will return just the FinTS URL for the first matching bank.",
     } else {
         value_t_or_exit!(matches, "bank_code", String)
     };
-    let print_all = matches.is_present("all");
     let print_json = matches.is_present("json");
 
-    if print_all {
-        let banks = get_banks_by_bank_code(&bank_code);
-        if banks.is_empty() {
-            eprintln!("No matching banks found");
-            std::process::exit(1);
-        }
-        println!("{}", serde_json::to_string_pretty(&banks)?);
-    } else {
-        let bank = get_bank_by_bank_code(&bank_code);
-        if let Some(bank) = bank {
-            if print_json {
-                println!("{}", serde_json::to_string_pretty(&bank)?);
-            } else if let Some(pin_tan_url) = bank.pin_tan_url {
-                println!("{}", pin_tan_url);
-            } else {
-                eprintln!("This bank has no available PIN TAN URL");
-                std::process::exit(1);
-            }
+    let bank = get_bank_by_bank_code(&bank_code);
+    if let Some(bank) = bank {
+        if print_json {
+            println!("{}", serde_json::to_string_pretty(&bank)?);
+        } else if let Some(pin_tan_url) = bank.pin_tan_address {
+            println!("{}", pin_tan_url);
         } else {
-            eprintln!("No matching bank found");
+            eprintln!("This bank has no available PIN TAN URL");
             std::process::exit(1);
         }
-    };
+    } else {
+        eprintln!("No matching bank found");
+        std::process::exit(1);
+    }
     Ok(())
 }

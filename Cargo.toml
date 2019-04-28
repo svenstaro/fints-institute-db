@@ -1,6 +1,6 @@
 [package]
 name = "fints-institute-db"
-version = "0.2.5"
+version = "0.3.0"
 authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
 edition = "2018"
 description = "A library and CLI tool to access FinTS access information for many German banks"
@@ -18,14 +18,15 @@ maintenance = { status = "actively-developed" }
 lto = true
 
 [dependencies]
-csv = "1"
 clap = "2"
 iban_validate = "2"
-chrono = { version = "0.4", features = ["serde"] }
 serde = "1"
 serde_derive = "1"
 serde_json = "1"
 
+[dev-dependencies]
+pretty_assertions = "0.6"
+assert_cmd = "0.11"
+
 [build-dependencies]
 reqwest = "0.9"
-encoding_rs = "0.8"

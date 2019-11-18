@@ -3,7 +3,7 @@ use std::fs;
 
 static HBCI4J_COMMIT: &'static str = "0072d401187a69a451eae1cbe928da3e2be6109f";
 
-fn main() -> Result<(), Box<std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let final_url = format!(
         "https://raw.githubusercontent.com/hbci4j/hbci4java/{commit}/src/main/resources/blz.properties",
 	commit=HBCI4J_COMMIT,

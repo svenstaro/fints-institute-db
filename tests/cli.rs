@@ -2,7 +2,7 @@ use assert_cmd::prelude::*;
 use clap::{crate_name, crate_version};
 use std::process::Command;
 
-type Error = Box<std::error::Error>;
+type Error = Box<dyn std::error::Error>;
 
 #[test]
 fn get_bank_by_bank_code() -> Result<(), Error> {

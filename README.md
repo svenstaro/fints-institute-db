@@ -13,7 +13,7 @@ During the build it will download a CSV file with all the banks which it will th
 Put this into your `Cargo.toml`:
 
     [dependencies]
-    fints_institute_db = "0.3"
+    fints_institute_db = "0.4"
 
 Then to use it:
 
@@ -28,7 +28,7 @@ println!("{:?}", bank.pin_tan_url);
 
 Additionally this crate includes a CLI tool for your convenience:
 
-    fints-institute-db 0.3.0
+    fints-institute-db 0.4.0
     Sven-Hendrik Haase <svenstaro@gmail.com>
     Tool to query the FinTS database.
     

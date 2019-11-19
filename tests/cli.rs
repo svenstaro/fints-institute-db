@@ -1,5 +1,5 @@
 use assert_cmd::prelude::*;
-use clap::{crate_name, crate_version};
+use structopt::clap::{crate_name, crate_version};
 use std::process::Command;
 
 type Error = Box<dyn std::error::Error>;
@@ -44,7 +44,7 @@ fn invalid_iban() -> Result<(), Error> {
         .arg("-i")
         .arg("test")
         .assert()
-        .stderr("error: Invalid value for '--iban <iban>': Invalid IBAN format\n")
+        .stderr("error: Invalid value for '--iban <iban>': the string does not follow the base IBAN rules\n")
         .failure();
 
     Ok(())

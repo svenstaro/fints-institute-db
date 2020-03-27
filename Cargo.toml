@@ -30,7 +30,7 @@ features = ["unicode-perl"]
 
 [dev-dependencies]
 pretty_assertions = "0.6"
-assert_cmd = "0.12"
+assert_cmd = "1.0"
 
 [build-dependencies]
 reqwest = "0.9"

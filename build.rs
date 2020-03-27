@@ -8,7 +8,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "https://raw.githubusercontent.com/hbci4j/hbci4java/{commit}/src/main/resources/blz.properties",
 	commit=HBCI4J_COMMIT,
     );
-    let mut res = reqwest::get(&final_url)?;
+    let mut res = reqwest::blocking::get(&final_url)?;
 
     let mut buf: Vec<u8> = vec![];
     res.copy_to(&mut buf)?;

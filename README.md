@@ -2,7 +2,6 @@
 [![Build Status](https://travis-ci.com/svenstaro/fints-institute-db.svg?branch=master)](https://travis-ci.com/svenstaro/fints-institute-db)
 [![Crates.io](https://img.shields.io/crates/v/fints-institute-db.svg)](https://crates.io/crates/fints-institute-db)
 [![docs](https://docs.rs/fints-institute-db/badge.svg)](https://docs.rs/fints-institute-db)
-[![dependency status](https://deps.rs/repo/github/svenstaro/fints-institute-db/status.svg)](https://deps.rs/repo/github/svenstaro/fints-institute-db)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/svenstaro/fints-institute-db/blob/master/LICENSE)
 
 This is a simple crate providing a convenient and safe interface to FinTS information of German banks.

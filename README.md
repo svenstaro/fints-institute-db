@@ -1,5 +1,5 @@
 # fints-institute-db
-[![Build Status](https://travis-ci.com/svenstaro/fints-institute-db.svg?branch=master)](https://travis-ci.com/svenstaro/fints-institute-db)
+[![CI](https://github.com/svenstaro/fints-institute-db/workflows/CI/badge.svg)](https://github.com/svenstaro/fints-institute-db/actions)
 [![Crates.io](https://img.shields.io/crates/v/fints-institute-db.svg)](https://crates.io/crates/fints-institute-db)
 [![docs](https://docs.rs/fints-institute-db/badge.svg)](https://docs.rs/fints-institute-db)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/svenstaro/fints-institute-db/blob/master/LICENSE)

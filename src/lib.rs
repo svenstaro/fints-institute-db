@@ -16,7 +16,7 @@
 use serde_derive::{Deserialize, Serialize};
 use std::str::FromStr;
 
-static BANKS: &'static str = include_str!(concat!(env!("OUT_DIR"), "/blz.properties"));
+static BANKS: &str = include_str!(concat!(env!("OUT_DIR"), "/blz.properties"));
 
 #[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq)]
 pub struct Bank {

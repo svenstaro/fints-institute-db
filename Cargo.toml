@@ -10,10 +10,6 @@ readme = "README.md"
 keywords = ["fints", "hbci", "bank", "banks", "banking"]
 categories = ["command-line-utilities", "command-line-interface", "parsing"]
 
-[badges]
-travis-ci = { repository = "svenstaro/fints-institute-db", branch = "master" }
-maintenance = { status = "actively-developed" }
-
 [profile.release]
 lto = true
 codegen-units = 1

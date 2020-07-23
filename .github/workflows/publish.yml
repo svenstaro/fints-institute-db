@@ -14,17 +14,17 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         include:
           - os: ubuntu-latest
-            artifact_name: target/x86_64-unknown-linux-musl/release/fints-institute-db
+            artifact_name: target/x86_64-unknown-linux-musl/release/cli
             release_name: linux-x86_64
             target: x86_64-unknown-linux-musl
             cross: true
           - os: windows-latest
-            artifact_name: target/x86_64-pc-windows-msvc/release/fints-institute-db.exe
+            artifact_name: target/x86_64-pc-windows-msvc/release/cli.exe
             release_name: windows-x86_64.exe
             target: x86_64-pc-windows-msvc
             cross: false
           - os: macos-latest
-            artifact_name: target/x86_64-apple-darwin/release/fints-institute-db
+            artifact_name: target/x86_64-apple-darwin/release/cli
             release_name: macos-x86_64
             target: x86_64-apple-darwin
             cross: false

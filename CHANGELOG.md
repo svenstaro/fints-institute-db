@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Update institutes database
 - Bump deps
 - Modernize crate
 - Switch away from Travis to GitHub Actions

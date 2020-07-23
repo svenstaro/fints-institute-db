@@ -1,7 +1,7 @@
 use std::env;
 use std::fs;
 
-static HBCI4J_COMMIT: &str = "0072d401187a69a451eae1cbe928da3e2be6109f";
+static HBCI4J_COMMIT: &str = "dfc8f67773580d9ba2c20f8b9876355364f46ffe";
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let final_url = format!(

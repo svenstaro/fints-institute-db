@@ -30,17 +30,17 @@ Additionally this crate includes a CLI tool for your convenience:
     fints-institute-db 0.4.0
     Sven-Hendrik Haase <svenstaro@gmail.com>
     Tool to query the FinTS database.
-    
+
     By default it will return just the FinTS URL for the first matching bank.
-    
+
     USAGE:
         cli [FLAGS] [OPTIONS] <--iban <iban>|--bankcode <bank_code>>
-    
+
     FLAGS:
         -h, --help       Prints help information
         -j, --json       Change tool behavior to output all data for the record as JSON
         -V, --version    Prints version information
-    
+
     OPTIONS:
         -b, --bankcode <bank_code>    Look up bank by German bank code (format: 12030000)
         -i, --iban <iban>             Look up bank by IBAN (format: DE02120300000000202051)
@@ -57,6 +57,6 @@ This crate is inspired by https://github.com/jhermsmeier/fints-institute-db and 
 
 This is mostly a note for me on how to release this thing:
 
-- Update version in Cargo.toml.
-- git commit and git tag -s, git push.
-- cargo publish
+- `cargo release --dry-run`
+- `cargo release`
+- Releases will automatically be deployed by Github Actions.

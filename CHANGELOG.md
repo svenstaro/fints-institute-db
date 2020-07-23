@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Fix binary artifact name to ensure that binary builds work again.
 
 ## [1.0.2] - 2020-07-23
 - Get rid of OpenSSL dependency by instead making use of RustLS.

@@ -13,7 +13,7 @@ During the build it will download a CSV file with all the banks which it will th
 Put this into your `Cargo.toml`:
 
     [dependencies]
-    fints_institute_db = "0.4"
+    fints_institute_db = "1"
 
 Then to use it:
 

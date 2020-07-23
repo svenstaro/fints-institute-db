@@ -100,7 +100,10 @@ mod tests {
         assert_eq!(bank.bic, "GENODEM1MEN");
         assert_eq!(bank.checksum_method, "34");
         assert_eq!(bank.rdh_address, Some("hbci.gad.de".to_string()));
-        assert_eq!(bank.pin_tan_address, Some("https://hbci-pintan.gad.de/cgi-bin/hbciservlet".to_string()));
+        assert_eq!(
+            bank.pin_tan_address,
+            Some("https://hbci-pintan.gad.de/cgi-bin/hbciservlet".to_string())
+        );
         assert_eq!(bank.rdh_version, Some("300".to_string()));
         assert_eq!(bank.pin_tan_version, Some("300".to_string()));
     }

@@ -1,6 +1,6 @@
 use assert_cmd::prelude::*;
-use structopt::clap::{crate_name, crate_version};
 use std::process::Command;
+use structopt::clap::{crate_name, crate_version};
 
 type Error = Box<dyn std::error::Error>;
 

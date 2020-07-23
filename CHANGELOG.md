@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Check in `Cargo.lock` to make sure the binary build is reproducible
 
 ## [1.0.0] - 2020-07-23
 - Update institutes database

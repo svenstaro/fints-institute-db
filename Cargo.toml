@@ -30,4 +30,4 @@ pretty_assertions = "0.6"
 assert_cmd = "1.0"
 
 [build-dependencies]
-reqwest = { version = "0.10", features = ["blocking"] }
+reqwest = { version = "0.10", features = ["blocking", "rustls-tls"], default-features = false }

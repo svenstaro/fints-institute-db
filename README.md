@@ -3,6 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/fints-institute-db.svg)](https://crates.io/crates/fints-institute-db)
 [![docs](https://docs.rs/fints-institute-db/badge.svg)](https://docs.rs/fints-institute-db)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/svenstaro/fints-institute-db/blob/master/LICENSE)
+[![Lines of Code](https://tokei.rs/b1/github/svenstaro/fints-institute-db)](https://github.com/svenstaro/fints-institute-db)
 
 This is a simple crate providing a convenient and safe interface to FinTS information of German banks.
 During the build it will download a CSV file with all the banks which it will then put into the library itself so that no extra files have to be taken care of.

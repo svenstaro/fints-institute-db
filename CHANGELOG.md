@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Fix docs.rs build.
+- Update bank list.
+- Bump deps.
 
 ## [1.0.3] - 2020-07-23
 - Fix binary artifact name to ensure that binary builds work again.

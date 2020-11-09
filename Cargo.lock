@@ -150,7 +150,7 @@ dependencies = [
 
 [[package]]
 name = "fints-institute-db"
-version = "1.0.5-alpha.0"
+version = "1.0.5"
 dependencies = [
  "assert_cmd",
  "iban_validate",

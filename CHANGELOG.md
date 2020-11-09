@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+
+## [1.0.5] - 2020-11-09
 - Add binaries for more architectures to releases.
 - Bump deps.
 
@@ -33,7 +35,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switch away from Travis to GitHub Actions.
 
 <!-- next-url -->
-[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.1...v1.0.2

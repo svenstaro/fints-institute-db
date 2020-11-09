@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Add binaries for more architectures to releases.
 
 ## [1.0.4] - 2020-10-07
 - Fix docs.rs build.

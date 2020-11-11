@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Add `get_bank_by_bic` to fetch a bank by its BIC
 
 ## [1.0.6] - 2020-11-09
 - Actually publish all binaries.

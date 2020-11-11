@@ -28,6 +28,16 @@ if let Some(bank) = get_bank_by_bank_code("12070000") {
 }
 ```
 
+Other use case, find bank by BIC:
+
+```rust
+use fints_institute_db::get_bank_by_bic;
+
+if let Some(bank) = get_bank_by_bic("GENODEM1MEN") {
+    println!("{:?}", bank.pin_tan_address);
+}
+```
+
 ## Command line utility
 
 Additionally this crate includes a CLI tool for your convenience:

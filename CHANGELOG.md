@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+
+## [1.1.0] - 2020-11-12
 - Add `get_bank_by_bic` to fetch a bank by its BIC
 
 ## [1.0.6] - 2020-11-09
@@ -39,7 +41,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switch away from Travis to GitHub Actions.
 
 <!-- next-url -->
-[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.3...v1.0.4

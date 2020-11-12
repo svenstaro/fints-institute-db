@@ -80,21 +80,32 @@ pub fn get_bank_by_bank_code(bank_code: &str) -> Option<Bank> {
     None
 }
 
+/// Retrieves the bank by its `bic`
+///
+/// # Examples
+///
+/// ```
+/// use fints_institute_db::get_bank_by_bic;
+///
+/// let bank = get_bank_by_bic("GENODEM1MEN");
+/// println!("{:?}", bank);
+/// ```
+pub fn get_bank_by_bic(bic: &str) -> Option<Bank> {
+    BANKS
+        .lines()
+        .map(|bank_csv_row| Bank::from_str(bank_csv_row))
+        .filter_map(Result::ok)
+        .find(|b| b.bic == bic)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
 
-    // These tests use the real CSV input data.
-    // As such, the tests might break randomly if the input document changes.
-    // This should happen rarely enough that it's still worthwhile to test with real data, though.
-
-    #[test]
-    fn getting_random_bank_works() {
-        let bank_code = "44761312";
-        let bank = get_bank_by_bank_code(bank_code).unwrap();
-
-        assert_eq!(bank.bank_code, bank_code);
+    /// assertion helper to keep the bank find tests DRY
+    fn assert_bank_matches(bank: &Bank) {
+        assert_eq!(bank.bank_code, "44761312");
         assert_eq!(bank.institute, "Mendener Bank");
         assert_eq!(bank.location, "Menden (Sauerland)");
         assert_eq!(bank.bic, "GENODEM1MEN");
@@ -106,6 +117,26 @@ mod tests {
         );
         assert_eq!(bank.rdh_version, Some("300".to_string()));
         assert_eq!(bank.pin_tan_version, Some("300".to_string()));
+    }
+
+    // These tests use the real CSV input data.
+    // As such, the tests might break randomly if the input document changes.
+    // This should happen rarely enough that it's still worthwhile to test with real data, though.
+
+    #[test]
+    fn get_bank_by_bank_code_test() {
+        let bank_code = "44761312";
+        let bank = get_bank_by_bank_code(bank_code).unwrap();
+
+        assert_bank_matches(&bank);
+    }
+
+    #[test]
+    fn get_bank_by_bic_test() {
+        let bic = "GENODEM1MEN";
+        let bank = get_bank_by_bic(bic).unwrap();
+
+        assert_bank_matches(&bank);
     }
 }
 

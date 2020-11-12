@@ -108,3 +108,6 @@ mod tests {
         assert_eq!(bank.pin_tan_version, Some("300".to_string()));
     }
 }
+
+#[cfg(doctest)]
+doc_comment::doctest!("../README.md", readme);

@@ -153,6 +153,7 @@ name = "fints-institute-db"
 version = "1.0.7-alpha.0"
 dependencies = [
  "assert_cmd",
+ "doc-comment",
  "iban_validate",
  "pretty_assertions",
  "regex",

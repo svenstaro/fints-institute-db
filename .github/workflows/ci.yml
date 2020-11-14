@@ -45,6 +45,13 @@ jobs:
           command: clippy
           args: -- -D warnings
 
+      # Running cargo clean appears to be a workaround for
+      # https://github.com/xd009642/tarpaulin/issues/463
+      - name: cargo clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clean
+
       - name: cargo tarpaulin
         uses: actions-rs/tarpaulin@v0.1
         if: matrix.os == 'ubuntu-latest'

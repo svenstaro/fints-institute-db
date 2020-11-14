@@ -54,6 +54,9 @@ jobs:
 
       - name: cargo tarpaulin
         uses: actions-rs/tarpaulin@v0.1
+        # If this is again unstable, try uncommenting the code below:
+        # with:
+        #   args: '-- --test-threads 1'
         if: matrix.os == 'ubuntu-latest'
 
       - name: Upload coverage to codecov.io

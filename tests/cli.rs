@@ -86,6 +86,21 @@ fn bank_exists_but_has_no_pin_tan_url() -> Result<(), Error> {
 }
 
 #[test]
+fn json_output() -> Result<(), Error> {
+    let stdout = Command::cargo_bin("cli")?
+        .arg("--bankcode")
+        .arg("12030000")
+        .arg("--json")
+        .assert()
+        .get_output()
+        .stdout
+        .clone();
+
+    serde_json::from_slice::<serde_json::Value>(&stdout)?;
+    Ok(())
+}
+
+#[test]
 fn help_shows() -> Result<(), Error> {
     Command::cargo_bin("cli")?.arg("-h").assert().success();
 

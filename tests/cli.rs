@@ -101,6 +101,18 @@ fn json_output() -> Result<(), Error> {
 }
 
 #[test]
+fn missing_iban_bank_identifier() -> Result<(), Error> {
+    Command::cargo_bin("cli")?
+        .arg("--iban")
+        .arg("PL30109024023716983694698824")
+        .assert()
+        .stderr("Invalid or missing IBAN bank identifier\n")
+        .failure();
+
+    Ok(())
+}
+
+#[test]
 fn help_shows() -> Result<(), Error> {
     Command::cargo_bin("cli")?.arg("-h").assert().success();
 

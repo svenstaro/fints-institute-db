@@ -74,6 +74,18 @@ fn invalid_bic() -> Result<(), Error> {
 }
 
 #[test]
+fn bank_exists_but_has_no_pin_tan_url() -> Result<(), Error> {
+    Command::cargo_bin("cli")?
+        .arg("--bankcode")
+        .arg("59010400")
+        .assert()
+        .stderr("This bank has no available PIN TAN URL\n")
+        .failure();
+
+    Ok(())
+}
+
+#[test]
 fn help_shows() -> Result<(), Error> {
     Command::cargo_bin("cli")?.arg("-h").assert().success();
 

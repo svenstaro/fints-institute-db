@@ -39,16 +39,33 @@ impl FromStr for Bank {
         // bank_code=institute|location|bic|checksum_method|rdh_address|pin_tan_address|rdh_version|pin_tan_version
         let first_part: Vec<&str> = s.split('=').collect();
         let second_part: Vec<&str> = first_part[1].split('|').collect();
+
         let bank = Bank {
             bank_code: first_part[0].to_string(),
             institute: second_part[0].to_string(),
             location: second_part[1].to_string(),
             bic: second_part[2].to_string(),
             checksum_method: second_part[3].to_string(),
-            rdh_address: second_part.get(4).map(|x| x.to_string()),
-            pin_tan_address: second_part.get(5).map(|x| x.to_string()),
-            rdh_version: second_part.get(6).map(|x| x.to_string()),
-            pin_tan_version: second_part.get(7).map(|x| x.to_string()),
+            rdh_address: if second_part[4].is_empty() {
+                None
+            } else {
+                Some(second_part[4].to_string())
+            },
+            pin_tan_address: if second_part[5].is_empty() {
+                None
+            } else {
+                Some(second_part[5].to_string())
+            },
+            rdh_version: if second_part[6].is_empty() {
+                None
+            } else {
+                Some(second_part[6].to_string())
+            },
+            pin_tan_version: if second_part[7].is_empty() {
+                None
+            } else {
+                Some(second_part[7].to_string())
+            },
         };
         Ok(bank)
     }

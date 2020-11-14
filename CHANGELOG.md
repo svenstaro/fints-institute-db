@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - ReleaseDate
 - Add `--bic` option to CLI tool.
+- Fix improper handling of empty entries in bank file.
 
 ## [1.1.0] - 2020-11-12
 - Add `get_bank_by_bic` to fetch a bank by its BIC.

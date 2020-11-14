@@ -44,3 +44,9 @@ jobs:
         with:
           command: clippy
           args: -- -D warnings
+
+      - name: cargo tarpaulin
+        uses: actions-rs/tarpaulin@v0.1
+
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v1

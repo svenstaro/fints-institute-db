@@ -47,6 +47,8 @@ jobs:
 
       - name: cargo tarpaulin
         uses: actions-rs/tarpaulin@v0.1
+        if: matrix.os == 'ubuntu-latest'
 
-      - name: Upload to codecov.io
+      - name: Upload coverage to codecov.io
         uses: codecov/codecov-action@v1
+        if: matrix.os == 'ubuntu-latest'

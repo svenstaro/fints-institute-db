@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+
+## [1.2.1] - 2021-03-27
 - Update bank list.
 - Bump deps.
 
@@ -47,7 +49,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switch away from Travis to GitHub Actions.
 
 <!-- next-url -->
-[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/svenstaro/fints-institute-db/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/svenstaro/fints-institute-db/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/svenstaro/fints-institute-db/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/svenstaro/fints-institute-db/compare/v1.0.5...v1.0.6

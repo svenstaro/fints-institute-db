@@ -44,7 +44,7 @@ if let Some(bank) = get_bank_by_bic("GENODEM1MEN") {
 Additionally this crate includes a CLI tool for your convenience:
 
 ```plain
-fints-institute-db 1.2.0
+fints-institute-db 1.2.1
 Sven-Hendrik Haase <svenstaro@gmail.com>
 Tool to query the FinTS database.
 

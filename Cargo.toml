@@ -1,6 +1,6 @@
 [package]
 name = "fints-institute-db"
-version = "1.2.1"
+version = "1.2.2-alpha.0"
 authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
 edition = "2018"
 description = "A library and CLI tool to access FinTS access information for many German banks"

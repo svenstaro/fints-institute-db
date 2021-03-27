@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Update bank list.
+- Bump deps.
 
 ## [1.2.0] - 2020-11-14
 - Add `--bic` option to CLI tool.

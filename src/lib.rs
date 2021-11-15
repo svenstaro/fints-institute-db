@@ -110,7 +110,7 @@ pub fn get_bank_by_bank_code(bank_code: &str) -> Option<Bank> {
 pub fn get_bank_by_bic(bic: &str) -> Option<Bank> {
     BANKS
         .lines()
-        .map(|bank_csv_row| Bank::from_str(bank_csv_row))
+        .map(Bank::from_str)
         .filter_map(Result::ok)
         .find(|b| b.bic == bic)
 }

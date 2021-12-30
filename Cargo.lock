@@ -31,9 +31,9 @@ dependencies = [
 
 [[package]]
 name = "arrayvec"
-version = "0.5.2"
+version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
+checksum = "8da52d66c7071e2e3fa2a1e5c6d088fec47b593032b254f5e980de8ea54454d6"
 
 [[package]]
 name = "assert_cmd"
@@ -368,9 +368,9 @@ dependencies = [
 
 [[package]]
 name = "iban_validate"
-version = "4.0.0"
+version = "4.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae1dbb2046534ff3eda29fa47148f3e28011cbaf063dd5893edf89f47c3fe115"
+checksum = "cc1d358f7ae89819e8656f1b495c9d760a9ca315998b12d589dc516c9f81ed08"
 dependencies = [
  "arrayvec",
 ]

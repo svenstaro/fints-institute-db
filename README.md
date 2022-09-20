@@ -77,6 +77,6 @@ This crate is inspired by https://github.com/jhermsmeier/fints-institute-db and 
 
 This is mostly a note for me on how to release this thing:
 
-- `cargo release --dry-run`
 - `cargo release`
-- Releases will automatically be deployed by Github Actions.
+- `cargo release --execute`
+- Releases will automatically be deployed by GitHub Actions.

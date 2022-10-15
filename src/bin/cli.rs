@@ -1,42 +1,55 @@
+use std::{error::Error, io};
+
+use clap::{ArgGroup, CommandFactory, Parser};
 use iban::Iban;
-use std::error::Error;
-use structopt::clap::ArgGroup;
-use structopt::StructOpt;
 
 use fints_institute_db::{get_bank_by_bank_code, get_bank_by_bic};
 
-fn criterion_group() -> ArgGroup<'static> {
-    ArgGroup::with_name("criterion").required(true)
-}
-
-#[derive(StructOpt, Debug)]
-#[structopt(
-    name = "fints-institute-db",
-    author,
-    about,
-    global_settings = &[structopt::clap::AppSettings::ColoredHelp],
-    group = criterion_group(),
-)]
-struct CliConfig {
+#[derive(Parser)]
+#[command(name = "fints-institute-db", author, about, version)]
+#[command(group(ArgGroup::new("mode").args(["iban", "bank_code", "bic"])))]
+struct CliArgs {
     /// Look up bank by IBAN (format: DE02120300000000202051)
-    #[structopt(long, group = "criterion")]
+    #[arg(long)]
     iban: Option<Iban>,
 
     /// Look up bank by German bank code (format: 12030000)
-    #[structopt(long = "bankcode", group = "criterion")]
+    #[arg(long = "bankcode")]
     bank_code: Option<String>,
 
     /// Look up bank by Bank Identifier Code (BIC) (format: GENODEM1MEN)
-    #[structopt(long = "bic", group = "criterion")]
+    #[arg(long = "bic")]
     bic: Option<String>,
 
     /// Change tool behavior to output all data for the record as JSON
-    #[structopt(short = "j", long = "json")]
+    #[arg(short = 'j', long = "json")]
     print_json: bool,
+
+    /// Generate completion file for a shell
+    #[arg(long = "print-completions", value_name = "shell")]
+    pub print_completions: Option<clap_complete::Shell>,
+
+    /// Generate man page
+    #[arg(long = "print-manpage")]
+    pub print_manpage: bool,
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let args = CliConfig::from_args();
+    let args = CliArgs::parse();
+
+    if let Some(shell) = args.print_completions {
+        let mut clap_app = CliArgs::command();
+        let app_name = clap_app.get_name().to_string();
+        clap_complete::generate(shell, &mut clap_app, app_name, &mut io::stdout());
+        return Ok(());
+    }
+
+    if args.print_manpage {
+        let clap_app = CliArgs::command();
+        let man = clap_mangen::Man::new(clap_app);
+        man.render(&mut io::stdout())?;
+        return Ok(());
+    }
 
     let bank = if let Some(iban) = args.iban {
         if let Some(identifier) = iban.bank_identifier() {
@@ -50,7 +63,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     } else if let Some(bic) = args.bic {
         get_bank_by_bic(&bic)
     } else {
-        unreachable!("Can't touch this.")
+        eprintln!("No lookup mode specified");
+        std::process::exit(1);
     };
 
     if let Some(bank) = bank {

@@ -44,23 +44,20 @@ if let Some(bank) = get_bank_by_bic("GENODEM1MEN") {
 Additionally this crate includes a CLI tool for your convenience:
 
 ```plain
-fints-institute-db 1.2.1
-Sven-Hendrik Haase <svenstaro@gmail.com>
-Tool to query the FinTS database.
+A library and CLI tool to access FinTS access information for many German banks
 
-By default it will return just the FinTS URL for the first matching bank.
+Usage: cli [OPTIONS]
 
-USAGE:
-    cli [FLAGS] [OPTIONS] <--iban <iban>|--bankcode <bank_code>>
-
-FLAGS:
-    -h, --help       Prints help information
-    -j, --json       Change tool behavior to output all data for the record as JSON
-    -V, --version    Prints version information
-
-OPTIONS:
-    -b, --bankcode <bank_code>    Look up bank by German bank code (format: 12030000)
-    -i, --iban <iban>             Look up bank by IBAN (format: DE02120300000000202051)
+Options:
+      --iban <IBAN>                Look up bank by IBAN (format: DE02120300000000202051)
+      --bankcode <BANK_CODE>       Look up bank by German bank code (format: 12030000)
+      --bic <BIC>                  Look up bank by Bank Identifier Code (BIC) (format: GENODEM1MEN)
+  -j, --json                       Change tool behavior to output all data for the record as JSON
+      --print-completions <shell>  Generate completion file for a shell [possible values: bash, elvish, fish, powershell,
+                                   zsh]
+      --print-manpage              Generate man page
+  -h, --help                       Print help information
+  -V, --version                    Print version information
 ```
 
 Example usages:

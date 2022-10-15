@@ -1,6 +1,6 @@
-use assert_cmd::prelude::*;
 use std::process::Command;
-use structopt::clap::{crate_name, crate_version};
+
+use assert_cmd::prelude::*;
 
 type Error = Box<dyn std::error::Error>;
 
@@ -44,7 +44,7 @@ fn invalid_iban() -> Result<(), Error> {
         .arg("--iban")
         .arg("test")
         .assert()
-        .stderr("error: Invalid value for '--iban <iban>': the string does not follow the base IBAN rules\n")
+        .stderr(predicates::str::starts_with("error: Invalid value 'test' for '--iban <IBAN>': the string does not follow the base IBAN rules\n"))
         .failure();
 
     Ok(())
@@ -125,7 +125,11 @@ fn version_shows() -> Result<(), Error> {
         .arg("-V")
         .assert()
         .success()
-        .stdout(format!("{} {}\n", crate_name!(), crate_version!()));
+        .stdout(format!(
+            "{} {}\n",
+            clap::crate_name!(),
+            clap::crate_version!()
+        ));
 
     Ok(())
 }

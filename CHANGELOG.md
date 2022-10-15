@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - ReleaseDate
 - Update clap to v4.
+- Add `--print-manpage` and `--print-completions`.
 
 ## [1.2.1] - 2021-03-27
 - Update bank list.

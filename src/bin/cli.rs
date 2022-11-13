@@ -1,10 +1,15 @@
+#[cfg(feature = "cli")]
 use std::{error::Error, io};
 
+#[cfg(feature = "cli")]
 use clap::{ArgGroup, CommandFactory, Parser};
+#[cfg(feature = "cli")]
 use iban::Iban;
 
+#[cfg(feature = "cli")]
 use fints_institute_db::{get_bank_by_bank_code, get_bank_by_bic};
 
+#[cfg(feature = "cli")]
 #[derive(Parser)]
 #[command(name = "fints-institute-db", author, about, version)]
 #[command(group(ArgGroup::new("mode").args(["iban", "bank_code", "bic"])))]
@@ -34,6 +39,7 @@ struct CliArgs {
     pub print_manpage: bool,
 }
 
+#[cfg(feature = "cli")]
 fn main() -> Result<(), Box<dyn Error>> {
     let args = CliArgs::parse();
 
@@ -81,4 +87,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         std::process::exit(1);
     }
     Ok(())
+}
+
+#[cfg(not(feature = "cli"))]
+fn main() {
 }

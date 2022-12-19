@@ -7,8 +7,7 @@ static HBCI4J_COMMIT: &str = "afc0c74deb82459b7a9ea91c4b82fc08afb5ab0b";
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let final_url = format!(
-        "https://raw.githubusercontent.com/hbci4j/hbci4java/{commit}/src/main/resources/blz.properties",
-        commit=HBCI4J_COMMIT,
+        "https://raw.githubusercontent.com/hbci4j/hbci4java/{HBCI4J_COMMIT}/src/main/resources/blz.properties",
     );
 
     let mut buf: Vec<u8> = vec![];

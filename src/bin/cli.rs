@@ -71,7 +71,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         if args.print_json {
             println!("{}", serde_json::to_string_pretty(&bank)?);
         } else if let Some(pin_tan_url) = bank.pin_tan_address {
-            println!("{}", pin_tan_url);
+            println!("{pin_tan_url}");
         } else {
             eprintln!("This bank has no available PIN TAN URL");
             std::process::exit(1);

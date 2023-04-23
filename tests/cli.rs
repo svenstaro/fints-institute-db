@@ -44,7 +44,7 @@ fn invalid_iban() -> Result<(), Error> {
         .arg("--iban")
         .arg("test")
         .assert()
-        .stderr(predicates::str::starts_with("error: Invalid value 'test' for '--iban <IBAN>': the string does not follow the base IBAN rules\n"))
+        .stderr(predicates::str::starts_with("error: invalid value 'test' for '--iban <IBAN>': the string does not follow the base IBAN rules\n"))
         .failure();
 
     Ok(())

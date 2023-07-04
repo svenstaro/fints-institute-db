@@ -11,7 +11,7 @@ keywords.workspace = true
 categories.workspace = true
 
 [dependencies]
-fints-institute-db = { path = "../fints-institute-db" }
+fints-institute-db = { path = "../fints-institute-db", version = "1" }
 
 iban_validate.workspace = true
 serde_json.workspace = true

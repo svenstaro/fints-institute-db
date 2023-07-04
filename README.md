@@ -43,13 +43,14 @@ if let Some(bank) = get_bank_by_bic("GENODEM1MEN") {
 
 Additionally this crate includes a CLI tool for your convenience. Use it with
 ```shell
-cargo run --features cli
+cd fints-institute-db-cli
+cargo run
 ```
 
 ```plain
 A library and CLI tool to access FinTS access information for many German banks
 
-Usage: cli [OPTIONS]
+Usage: fints-institute-db-cli [OPTIONS]
 
 Options:
       --iban <IBAN>                Look up bank by IBAN (format: DE02120300000000202051)

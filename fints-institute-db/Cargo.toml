@@ -1,0 +1,27 @@
+[package]
+name = "fints-institute-db"
+description = "A library to access FinTS access information for many German banks"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+iban_validate.workspace = true
+serde_json.workspace = true
+
+serde = { version = "1", default-features = false, features = ["derive"] }
+regex = { version = "1", features = ["unicode-perl"] }
+
+[dev-dependencies]
+assert_cmd = "2.0"
+doc-comment = "0.3"
+predicates = "3"
+pretty_assertions = "1.3"
+
+[build-dependencies]
+reqwest = { version = "0.11", features = ["blocking", "rustls-tls"], default-features = false }

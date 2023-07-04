@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Split the package into a bin package and a lib package using workspaces [#170](https://github.com/svenstaro/fints-institute-db/issues/170)
 
 ## [1.2.2] - 2022-10-15
 - Update clap to v4.

@@ -1,0 +1,21 @@
+[package]
+name = "fints-institute-db-cli"
+description = "A CLI tool to access FinTS access information for many German banks"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+fints-institute-db = { path = "../fints-institute-db" }
+
+iban_validate.workspace = true
+serde_json.workspace = true
+
+clap = { version = "4", features = ["derive", "cargo", "wrap_help", "deprecated"] }
+clap_complete = { version = "4" }
+clap_mangen = { version = "0.2" }

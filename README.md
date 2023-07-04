@@ -41,7 +41,10 @@ if let Some(bank) = get_bank_by_bic("GENODEM1MEN") {
 
 ## Command line utility
 
-Additionally this crate includes a CLI tool for your convenience:
+Additionally this crate includes a CLI tool for your convenience. Use it with
+```shell
+cargo run --features cli
+```
 
 ```plain
 A library and CLI tool to access FinTS access information for many German banks

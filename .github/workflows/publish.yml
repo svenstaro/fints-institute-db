@@ -49,7 +49,7 @@ jobs:
       - name: Compress binaries
         uses: svenstaro/upx-action@v2
         with:
-          files: target/${{ matrix.target }}/release/cli${{ env.EXE }}
+          files: target/${{ matrix.target }}/release/fints-institute-db-cli${{ env.EXE }}
           args: --best --lzma
           strip: false  # We're stripping already in Cargo.toml
         if: ${{ matrix.compress }}
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.target }}
-          path: target/${{ matrix.target }}/release/cli${{ env.EXE }}
+          path: target/${{ matrix.target }}/release/fints-institute-db-cli${{ env.EXE }}
 
       - name: Get version from tag
         id: extract_version
@@ -85,7 +85,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/${{ matrix.target }}/release/cli${{ env.EXE }}
+          file: target/${{ matrix.target }}/release/fints-institute-db-cli${{ env.EXE }}
           tag: ${{ github.ref_name }}
           asset_name: fints-institute-db-${{ steps.extract_version.outputs.version }}-${{ matrix.target }}${{ env.EXE }}
           body: ${{ steps.changelog_entry.outputs.content }}

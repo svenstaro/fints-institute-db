@@ -13,7 +13,7 @@
 //! println!("{:?}", bank.pin_tan_address);
 //! ```
 
-use serde_derive::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 use std::str::FromStr;
 
 static BANKS: &str = include_str!(concat!(env!("OUT_DIR"), "/blz.properties"));
@@ -158,4 +158,4 @@ mod tests {
 }
 
 #[cfg(doctest)]
-doc_comment::doctest!("../README.md", readme);
+doc_comment::doctest!("../../README.md", readme);

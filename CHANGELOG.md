@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased] - ReleaseDate
+- Update bank list.
+- Bump deps.
 
 ## [1.3.0] - 2023-07-04
 - Split the package into a bin package and a lib package using workspaces [#170](https://github.com/svenstaro/fints-institute-db/issues/170)

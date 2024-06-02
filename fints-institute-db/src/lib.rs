@@ -130,7 +130,7 @@ mod tests {
         assert_eq!(bank.rdh_address, Some("hbci.gad.de".to_string()));
         assert_eq!(
             bank.pin_tan_address,
-            Some("https://hbci-pintan.gad.de/cgi-bin/hbciservlet".to_string())
+            Some("https://fints1.atruvia.de/cgi-bin/hbciservlet".to_string())
         );
         assert_eq!(bank.rdh_version, Some("300".to_string()));
         assert_eq!(bank.pin_tan_version, Some("300".to_string()));

@@ -3,7 +3,7 @@ use std::fs;
 
 // Check here for latest updates:
 // https://github.com/hbci4j/hbci4java/blob/master/src/main/resources/blz.properties
-static HBCI4J_COMMIT: &str = "afc0c74deb82459b7a9ea91c4b82fc08afb5ab0b";
+static HBCI4J_COMMIT: &str = "b5c9bfd0174ad324da9d92dd8a667dee5f6ad046";
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let final_url = format!(

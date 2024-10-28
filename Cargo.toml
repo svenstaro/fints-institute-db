@@ -16,7 +16,7 @@ keywords = ["fints", "hbci", "bank", "banks", "banking"]
 categories = ["command-line-utilities", "command-line-interface", "parsing"]
 
 [workspace.dependencies]
-iban_validate = "4"
+iban_validate = "5"
 serde_json = "1"
 
 [profile.release]

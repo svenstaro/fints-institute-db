@@ -20,7 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         buf.push(88);
     }
 
-    let filename = final_url.split('/').last().unwrap();
+    let filename = final_url.split('/').next_back().unwrap();
     let out_file = format!(
         "{out_dir}/{filename}",
         out_dir = env::var("OUT_DIR")?,

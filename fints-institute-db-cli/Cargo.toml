@@ -18,4 +18,4 @@ serde_json.workspace = true
 
 clap = { version = "4", features = ["derive", "cargo", "wrap_help", "deprecated"] }
 clap_complete = { version = "4" }
-clap_mangen = { version = "0.2" }
+clap_mangen = { version = "0.3" }

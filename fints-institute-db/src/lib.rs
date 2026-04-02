@@ -123,11 +123,11 @@ mod tests {
     /// assertion helper to keep the bank find tests DRY
     fn assert_bank_matches(bank: &Bank) {
         assert_eq!(bank.bank_code, "44761312");
-        assert_eq!(bank.institute, "Mendener Bank");
+        assert_eq!(bank.institute, "Mendener Bank eG");
         assert_eq!(bank.location, "Menden (Sauerland)");
         assert_eq!(bank.bic, "GENODEM1MEN");
         assert_eq!(bank.checksum_method, "34");
-        assert_eq!(bank.rdh_address, Some("hbci.gad.de".to_string()));
+        assert_eq!(bank.rdh_address, Some("fints1.atruvia.de".to_string()));
         assert_eq!(
             bank.pin_tan_address,
             Some("https://fints1.atruvia.de/cgi-bin/hbciservlet".to_string())
